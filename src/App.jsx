@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef, useState, useEffect, useMemo } from "react";
+import { useState, useEffect, useMemo, useRef } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import {
@@ -55,11 +55,11 @@ export default function Home() {
   const { isDarkMode } = useTheme();
 
   // Refs for sections
-  const heroRef = useRef < HTMLDivElement > null;
-  const aboutRef = useRef < HTMLDivElement > null;
-  const hobbiesRef = useRef < HTMLDivElement > null;
-  const contactRef = useRef < HTMLDivElement > null;
-  const containerRef = useRef < HTMLDivElement > null;
+  const heroRef = useRef(null);
+  const aboutRef = useRef(null);
+  const hobbiesRef = useRef(null);
+  const contactRef = useRef(null);
+  const containerRef = useRef(null);
 
   // Intersection observers for sections
   const [heroInViewRef, heroInView] = useIntersectionObserver({
@@ -118,9 +118,9 @@ export default function Home() {
 
   // Performance optimization: throttle cursor updates
   useEffect(() => {
-    let timeoutId: NodeJS.Timeout | null = null;
+    let timeoutId = null;
 
-    const handleMouseMove = (e: MouseEvent) => {
+    const handleMouseMove = (e) => {
       if (!timeoutId) {
         timeoutId = setTimeout(() => {
           setCursorPosition({ x: e.clientX, y: e.clientY });
@@ -163,7 +163,7 @@ export default function Home() {
 
   // Close mobile menu when clicking outside
   useEffect(() => {
-    const handleClickOutside = (e: MouseEvent) => {
+    const handleClickOutside = (e) => {
       if (isMobileMenuOpen && e.target instanceof Element) {
         const menuContainer = document.querySelector(".mobile-menu-container");
         if (menuContainer && !menuContainer.contains(e.target)) {
@@ -178,7 +178,7 @@ export default function Home() {
 
   // Handle escape key for accessibility
   useEffect(() => {
-    const handleEscape = (e: KeyboardEvent) => {
+    const handleEscape = (e) => {
       if (e.key === "Escape") {
         setIsMobileMenuOpen(false);
       }
@@ -333,7 +333,7 @@ export default function Home() {
                     opacity: [0.5, 0.7, 0.5],
                   }}
                   transition={{
-                    repeat: Number.POSITIVE_INFINITY,
+                    repeat: Infinity,
                     duration: 3,
                     ease: "easeInOut",
                   }}
@@ -385,7 +385,7 @@ export default function Home() {
             <motion.div
               className="absolute bottom-10 left-1/2 transform -translate-x-1/2 z-10"
               animate={{ y: [0, 10, 0] }}
-              transition={{ repeat: Number.POSITIVE_INFINITY, duration: 2 }}
+              transition={{ repeat: Infinity, duration: 2 }}
             >
               <a
                 href="#about"
@@ -396,7 +396,7 @@ export default function Home() {
                   <motion.div
                     animate={{ y: [0, 12, 0] }}
                     transition={{
-                      repeat: Number.POSITIVE_INFINITY,
+                      repeat: Infinity,
                       duration: 1.5,
                     }}
                     className="w-2 h-2 bg-primary rounded-full"

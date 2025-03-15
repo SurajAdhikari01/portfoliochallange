@@ -4,8 +4,8 @@ import { useRef, useEffect } from "react";
 import * as THREE from "three";
 
 export default function ThreeDBackground() {
-  const containerRef = useRef < HTMLDivElement > null;
-  const rendererRef = (useRef < THREE.WebGLRenderer) | (null > null);
+  const containerRef = useRef(null);
+  const rendererRef = useRef(null);
 
   useEffect(() => {
     if (!containerRef.current) return;

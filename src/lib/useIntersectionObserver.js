@@ -1,18 +1,8 @@
-// Custom intersection observer hook for performance-optimized animations
 import { useEffect, useState, useRef } from "react";
 
-type IntersectionObserverOptions = {
-  root?: Element | null;
-  rootMargin?: string;
-  threshold?: number | number[];
-};
-
-export function useIntersectionObserver(
-  options: IntersectionObserverOptions = {},
-  onceOnly: boolean = false
-): [React.RefObject<HTMLElement>, boolean] {
+export function useIntersectionObserver(options = {}, onceOnly = false) {
   const [isIntersecting, setIsIntersecting] = useState(false);
-  const ref = useRef<HTMLElement>(null);
+  const ref = useRef(null);
   const { root = null, rootMargin = "0px", threshold = 0 } = options;
 
   useEffect(() => {

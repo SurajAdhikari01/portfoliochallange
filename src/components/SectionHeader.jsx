@@ -1,14 +1,9 @@
-"use client"
+"use client";
 
-import { motion } from "framer-motion"
-import { ColorChangeText } from "./TextAnimations"
+import { motion } from "framer-motion";
+import { ColorChangeText } from "./TextAnimations";
 
-type SectionHeaderProps = {
-  title: string
-  inView?: boolean
-}
-
-export default function SectionHeader({ title, inView = false }: SectionHeaderProps) {
+export default function SectionHeader({ title, inView = false }) {
   return (
     <motion.div
       initial={{ opacity: 0, y: 30 }}
@@ -28,5 +23,5 @@ export default function SectionHeader({ title, inView = false }: SectionHeaderPr
         />
       </h2>
     </motion.div>
-  )
+  );
 }

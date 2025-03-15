@@ -1,4 +1,3 @@
-import type { Metadata } from "next";
 import { Inter, Playfair_Display } from "next/font/google";
 import { Analytics } from "@vercel/analytics/react";
 
@@ -17,7 +16,7 @@ const playfair = Playfair_Display({
   variable: "--font-heading",
 });
 
-export const metadata: Metadata = {
+export const metadata = {
   title: "Bliss | Personal Website",
   description:
     "Personal website for Bliss, showcasing her hobbies, passions, and life with Lucy the cat.",
@@ -64,11 +63,7 @@ export const metadata: Metadata = {
   manifest: "/site.webmanifest",
 };
 
-export default function RootLayout({
-  children,
-}: Readonly<{
-  children: React.ReactNode,
-}>) {
+export default function RootLayout({ children }) {
   const currentYear = new Date().getFullYear();
 
   return (

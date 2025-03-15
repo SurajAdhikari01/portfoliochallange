@@ -1,18 +1,9 @@
-"use client"
+"use client";
 
-import { ReactNode } from "react"
-import { motion } from "framer-motion"
-import Tilt from "./Tilt"
+import { motion } from "framer-motion";
+import Tilt from "./Tilt";
 
-type SocialLinkProps = {
-  icon: ReactNode
-  platform: string
-  username: string
-  href: string
-  color: string
-}
-
-export default function SocialLink({ icon, platform, username, href, color }: SocialLinkProps) {
+export default function SocialLink({ icon, platform, username, href, color }) {
   return (
     <Tilt scale={1.05} perspective={500}>
       <motion.a
@@ -41,9 +32,11 @@ export default function SocialLink({ icon, platform, username, href, color }: So
           />
           <div className="relative z-10">{icon}</div>
         </motion.div>
-        <h3 className="font-medium text-gray-900 dark:text-gray-100">{platform}</h3>
+        <h3 className="font-medium text-gray-900 dark:text-gray-100">
+          {platform}
+        </h3>
         <p className="text-sm text-gray-600 dark:text-gray-400">{username}</p>
       </motion.a>
     </Tilt>
-  )
+  );
 }

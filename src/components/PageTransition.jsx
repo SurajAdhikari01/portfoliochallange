@@ -4,11 +4,7 @@ import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { usePathname } from "next/navigation";
 
-export default function PageTransition({
-  children,
-}: {
-  children: React.ReactNode,
-}) {
+export default function PageTransition({ children }) {
   const pathname = usePathname();
   const [loading, setLoading] = useState(true);
   const [showIntro, setShowIntro] = useState(true);

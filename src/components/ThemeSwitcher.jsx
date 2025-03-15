@@ -1,22 +1,23 @@
-"use client"
+"use client";
 
-import { useState } from "react"
-import { motion, AnimatePresence } from "framer-motion"
-import { Sun, Moon, Laptop, Palette } from "lucide-react"
+import { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import { Sun, Moon, Laptop, Palette } from "lucide-react";
 
-import { useTheme } from "@/components/ThemeProvider"
-import { Button } from "@/components/ui/button"
+import { useTheme } from "@/components/ThemeProvider";
+import { Button } from "@/components/ui/button";
 
 export default function ThemeSwitcher() {
-  const { theme, setTheme, colorScheme, setColorScheme, isDarkMode } = useTheme()
-  const [showColorOptions, setShowColorOptions] = useState(false)
-  
+  const { theme, setTheme, colorScheme, setColorScheme, isDarkMode } =
+    useTheme();
+  const [showColorOptions, setShowColorOptions] = useState(false);
+
   const colorSchemes = [
     { name: "pink", color: "#F472B6" },
     { name: "purple", color: "#A78BFA" },
     { name: "blue", color: "#60A5FA" },
-    { name: "mint", color: "#34D399" }
-  ]
+    { name: "mint", color: "#34D399" },
+  ];
 
   return (
     <div className="relative">
@@ -25,10 +26,10 @@ export default function ThemeSwitcher() {
           variant="ghost"
           size="icon"
           onClick={() => {
-            const modes: ("light" | "dark" | "system")[] = ["light", "dark", "system"]
-            const currentIndex = modes.indexOf(theme)
-            const nextIndex = (currentIndex + 1) % modes.length
-            setTheme(modes[nextIndex])
+            const modes = ["light", "dark", "system"];
+            const currentIndex = modes.indexOf(theme);
+            const nextIndex = (currentIndex + 1) % modes.length;
+            setTheme(modes[nextIndex]);
           }}
           aria-label="Toggle theme"
         >
@@ -44,7 +45,7 @@ export default function ThemeSwitcher() {
                 <Sun className="h-5 w-5" />
               </motion.div>
             )}
-            
+
             {theme === "dark" && (
               <motion.div
                 key="dark"
@@ -56,7 +57,7 @@ export default function ThemeSwitcher() {
                 <Moon className="h-5 w-5" />
               </motion.div>
             )}
-            
+
             {theme === "system" && (
               <motion.div
                 key="system"
@@ -70,20 +71,22 @@ export default function ThemeSwitcher() {
             )}
           </AnimatePresence>
         </Button>
-        
+
         <Button
           variant="ghost"
           size="icon"
           onClick={() => setShowColorOptions(!showColorOptions)}
           aria-label="Change color scheme"
         >
-          <Palette 
-            className="h-5 w-5" 
-            style={{ color: colorSchemes.find(s => s.name === colorScheme)?.color }} 
+          <Palette
+            className="h-5 w-5"
+            style={{
+              color: colorSchemes.find((s) => s.name === colorScheme)?.color,
+            }}
           />
         </Button>
       </div>
-      
+
       <AnimatePresence>
         {showColorOptions && (
           <motion.div
@@ -98,17 +101,20 @@ export default function ThemeSwitcher() {
                 <button
                   key={scheme.name}
                   onClick={() => {
-                    setColorScheme(scheme.name as any)
-                    setShowColorOptions(false)
+                    setColorScheme(scheme.name);
+                    setShowColorOptions(false);
                   }}
                   className={`w-8 h-8 rounded-full transition-all ${
-                    colorScheme === scheme.name 
-                      ? "ring-2 ring-offset-2 ring-offset-white dark:ring-offset-gray-800" 
+                    colorScheme === scheme.name
+                      ? "ring-2 ring-offset-2 ring-offset-white dark:ring-offset-gray-800"
                       : "hover:scale-110"
                   }`}
-                  style={{ 
+                  style={{
                     backgroundColor: scheme.color,
-                    boxShadow: colorScheme === scheme.name ? "0 0 0 2px rgba(0,0,0,0.1)" : "none"
+                    boxShadow:
+                      colorScheme === scheme.name
+                        ? "0 0 0 2px rgba(0,0,0,0.1)"
+                        : "none",
                   }}
                   aria-label={`Set color theme to ${scheme.name}`}
                 />
@@ -118,5 +124,5 @@ export default function ThemeSwitcher() {
         )}
       </AnimatePresence>
     </div>
-  )
+  );
 }

@@ -3,11 +3,7 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
 
-type ColorChangeTextProps = {
-  text: string,
-};
-
-export function ColorChangeText({ text }: ColorChangeTextProps) {
+export function ColorChangeText({ text }) {
   return (
     <span className="inline-block">
       {text.split("").map((char, index) => (
@@ -34,7 +30,7 @@ export function ColorChangeText({ text }: ColorChangeTextProps) {
   );
 }
 
-export function HoverFlipText({ text }: ColorChangeTextProps) {
+export function HoverFlipText({ text }) {
   return (
     <span className="inline-flex">
       {text.split("").map((letter, index) => (
@@ -62,7 +58,7 @@ export function HoverFlipText({ text }: ColorChangeTextProps) {
   );
 }
 
-export function GlitchText({ text }: ColorChangeTextProps) {
+export function GlitchText({ text }) {
   const [isHovering, setIsHovering] = useState(false);
 
   return (

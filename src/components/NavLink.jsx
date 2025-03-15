@@ -1,19 +1,12 @@
-"use client"
+"use client";
 
-import { motion } from "framer-motion"
-import { cn } from "@/lib/utils"
+import { motion } from "framer-motion";
+import { cn } from "@/lib/utils";
 
-type NavLinkProps = {
-  href: string
-  children: React.ReactNode
-  isActive?: boolean
-  className?: string
-}
-
-export default function NavLink({ href, children, isActive, className }: NavLinkProps) {
+export default function NavLink({ href, children, isActive, className }) {
   return (
-    <a 
-      href={href} 
+    <a
+      href={href}
       className={cn(
         "text-gray-700 dark:text-gray-300 hover:text-primary dark:hover:text-primary transition-colors font-medium relative group",
         isActive && "text-primary dark:text-primary font-semibold",
@@ -33,5 +26,5 @@ export default function NavLink({ href, children, isActive, className }: NavLink
         transition={{ duration: 0.3 }}
       />
     </a>
-  )
+  );
 }
