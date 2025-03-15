@@ -3,7 +3,7 @@
 import { motion, AnimatePresence } from "framer-motion";
 import NavLink from "./NavLink";
 
-export default function MobileMenu({ isOpen, setIsOpen, currentSection }) {
+export function MobileMenu({ isOpen, setIsOpen, currentSection }) {
   return (
     <div className="md:hidden mobile-menu-container">
       <button
@@ -63,3 +63,5 @@ export default function MobileMenu({ isOpen, setIsOpen, currentSection }) {
     </div>
   );
 }
+
+export default MobileMenu;

@@ -1,10 +1,9 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Book, Film, Palette, Cat } from "lucide-react";
-import Image from "next/image";
-import { Button } from "@/components/ui/button";
+import { Button } from "./ui/button";
 
 const storyContent = {
   reading: {
@@ -173,13 +172,10 @@ export default function HobbyStory() {
               <div className="grid md:grid-cols-2 h-full max-h-[80vh]">
                 <div className="relative aspect-[3/4] md:aspect-auto md:h-full">
                   {activeHobby && (
-                    <Image
+                    <img
                       src={storyContent[activeHobby].image}
                       alt={storyContent[activeHobby].title}
-                      className="object-cover"
-                      fill
-                      sizes="(max-width: 768px) 100vw, 50vw"
-                      priority
+                      className="object-cover w-full h-full"
                     />
                   )}
                   <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent flex items-end">
@@ -263,7 +259,6 @@ export default function HobbyStory() {
   );
 }
 
-// Hobby card component with hover animation
 function HobbyCard({ title, icon, onClick }) {
   return (
     <motion.div
@@ -307,7 +302,6 @@ function HobbyCard({ title, icon, onClick }) {
           </svg>
         </motion.p>
 
-        {/* Bottom decoration */}
         <div className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-pink-300 to-pink-500 transform scale-x-0 group-hover:scale-x-100 transition-transform origin-left" />
       </div>
     </motion.div>

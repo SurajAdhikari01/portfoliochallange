@@ -1,9 +1,9 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { cn } from "@/lib/utils";
+import { cn } from "../lib/utils";
 
-export default function NavLink({ href, children, isActive, className }) {
+export function NavLink({ href, children, isActive, className }) {
   return (
     <a
       href={href}
@@ -28,3 +28,5 @@ export default function NavLink({ href, children, isActive, className }) {
     </a>
   );
 }
+
+export default NavLink;

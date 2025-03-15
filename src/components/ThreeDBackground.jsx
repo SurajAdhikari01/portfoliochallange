@@ -1,5 +1,3 @@
-"use client";
-
 import { useRef, useEffect } from "react";
 import * as THREE from "three";
 
@@ -79,16 +77,15 @@ export default function ThreeDBackground() {
       camera.updateProjectionMatrix();
       renderer.setSize(window.innerWidth, window.innerHeight);
     };
-
     window.addEventListener("resize", handleResize);
 
     // Mouse interaction
     const mouse = { x: 0, y: 0 };
-
-    document.addEventListener("mousemove", (event) => {
+    const handleMouseMove = (event) => {
       mouse.x = (event.clientX / window.innerWidth) * 2 - 1;
       mouse.y = -(event.clientY / window.innerHeight) * 2 + 1;
-    });
+    };
+    document.addEventListener("mousemove", handleMouseMove);
 
     // Animation loop
     const animate = () => {
@@ -106,16 +103,19 @@ export default function ThreeDBackground() {
 
       renderer.render(scene, camera);
     };
-
     animate();
 
     // Cleanup
     return () => {
       window.removeEventListener("resize", handleResize);
+      document.removeEventListener("mousemove", handleMouseMove);
       if (containerRef.current && rendererRef.current) {
         containerRef.current.removeChild(rendererRef.current.domElement);
       }
-      scene.dispose();
+      // Dispose of geometry, material and renderer resources
+      particlesGeometry.dispose();
+      particlesMaterial.dispose();
+      renderer.dispose();
     };
   }, []);
 

@@ -2,56 +2,58 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Theme Variables */
+@import "tailwindcss";
 
+/* Updated Color Palette */
 :root {
-  /* Default theme colors - pink */
-  --primary: 236 72 153;
-  --primary-light: 249 168 212;
-  --primary-dark: 219 39 119;
-  --accent: 217 70 239;
-  --accent-light: 232 121 249;
-  --accent-dark: 192 38 211;
+  /* Redesigned theme colors - pink-inspired */
+  --primary: 255 105 180; /* A vibrant, yet soft hot pink */
+  --primary-light: 255 182 193; /* A gentle light pink */
+  --primary-dark: 219 112 147; /* A muted pale violet red */
   
-  /* Light mode */
+  --accent: 255 64 129; /* A stronger accent pink */
+  --accent-light: 255 138 150; /* A softened variant of accent */
+  --accent-dark: 228 0 126; /* A deep, professional pink tone */
+  
+  /* Neutrals for a professional look */
   --background: 255 255 255;
-  --foreground: 15 23 42;
+  --foreground: 34 34 34;
   --card: 255 255 255;
-  --card-foreground: 15 23 42;
+  --card-foreground: 34 34 34;
   --popover: 255 255 255;
-  --popover-foreground: 15 23 42;
-  --muted: 241 245 249;
-  --muted-foreground: 100 116 139;
-  --border: 226 232 240;
-  --input: 226 232 240;
-  --ring: 236 72 153;
+  --popover-foreground: 34 34 34;
+  --muted: 240 240 240;
+  --muted-foreground: 100 100 100;
+  --border: 220 220 220;
+  --input: 220 220 220;
+  --ring: 255 105 180;
   
   --radius: 0.5rem;
 }
 
 /* Dark mode */
 .dark {
-  --background: 15 23 42;
-  --foreground: 248 250 252;
-  --card: 30 41 59;
-  --card-foreground: 248 250 252;
-  --popover: 30 41 59;
-  --popover-foreground: 248 250 252;
-  --muted: 51 65 85;
-  --muted-foreground: 148 163 184;
-  --border: 51 65 85;
-  --input: 51 65 85;
+  --background: 34 34 34;
+  --foreground: 235 235 235;
+  --card: 50 50 50;
+  --card-foreground: 235 235 235;
+  --popover: 50 50 50;
+  --popover-foreground: 235 235 235;
+  --muted: 64 64 64;
+  --muted-foreground: 180 180 180;
+  --border: 64 64 64;
+  --input: 64 64 64;
 }
 
 /* Color schemes */
 .theme-pink {
-  --primary: 236 72 153;
-  --primary-light: 249 168 212;
-  --primary-dark: 219 39 119;
-  --accent: 217 70 239;
-  --accent-light: 232 121 249;
-  --accent-dark: 192 38 211;
-  --ring: 236 72 153;
+  --primary: 255 105 180;
+  --primary-light: 255 182 193;
+  --primary-dark: 219 112 147;
+  --accent: 255 64 129;
+  --accent-light: 255 138 150;
+  --accent-dark: 228 0 126;
+  --ring: 255 105 180;
 }
 
 .theme-purple {
@@ -85,9 +87,7 @@
 }
 
 @layer base {
-  * {
-    @apply border-border;
-  }
+  
   
   body {
     @apply bg-background text-foreground;

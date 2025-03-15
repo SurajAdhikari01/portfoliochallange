@@ -1,11 +1,8 @@
-"use client";
-
 import { useEffect, useState, useRef } from "react";
 import { motion, useMotionValue, useSpring, animate } from "framer-motion";
-import Image from "next/image";
 import { Cat, Heart } from "lucide-react";
 
-// Removing TypeScript types, converting to plain JSX
+// Removing Next.js specific elements and using plain JSX elements instead.
 // CatBehavior: 'idle' | 'walking' | 'playing' | 'sleeping' | 'curious'
 // CatDirection: 'left' | 'right'
 // CatMood: 'happy' | 'playful' | 'tired' | 'curious'
@@ -157,7 +154,6 @@ export default function LucyTheCat() {
       ["left", 1500],
       ["right", 800],
     ];
-
     sequence.reduce(
       (p, [dir, duration]) =>
         p.then(
@@ -276,14 +272,14 @@ export default function LucyTheCat() {
       setBehavior("playing");
       setPlayWithCat(true);
 
-      // Happy response
+      // Happy response: playful jump
       animate(y, y.get() - 30, {
         type: "spring",
         damping: 10,
         stiffness: 300,
       });
 
-      // Happy thought
+      // Display a happy thought
       const happyThoughts = [
         "Pet me more!",
         "Purrrr!",
@@ -370,7 +366,7 @@ export default function LucyTheCat() {
           </>
         )}
 
-        {/* Cat Animation - More detailed SVG */}
+        {/* Cat Animation */}
         <motion.div
           animate={{
             scale: behavior === "sleeping" ? 1.2 : 1,
@@ -444,7 +440,7 @@ export default function LucyTheCat() {
               }}
             />
 
-            {/* Cat detail - whiskers */}
+            {/* Cat whiskers */}
             <line
               x1="55"
               y1="33"

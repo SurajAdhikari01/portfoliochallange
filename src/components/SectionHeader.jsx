@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { ColorChangeText } from "./TextAnimations";
+import { ColorChangeText } from "./TextAnimation";
 
 export default function SectionHeader({ title, inView = false }) {
   return (

@@ -1,15 +1,10 @@
-"use client";
-
 import { useState, useEffect, useMemo, useRef } from "react";
-import Image from "next/image";
-import Link from "next/link";
 import {
   motion,
   useScroll,
   useTransform,
   useSpring,
   useMotionValue,
-  AnimatePresence,
 } from "framer-motion";
 import {
   Book,
@@ -26,14 +21,22 @@ import {
   Github,
 } from "lucide-react";
 
-import { Button } from "@/components/ui/button";
-import { cn } from "@/lib/utils";
-import { useTheme } from "@/components/ThemeProvider";
-import ThemeSwitcher from "@/components/ThemeSwitcher";
-import HobbyStory from "@/components/HobbyStory";
-import LucyTheCat from "@/components/LucyTheCat";
-import { useIntersectionObserver } from "@/lib/useIntersectionObserver";
-import { useImagePreloader } from "@/lib/useImagePreloader";
+import { Button } from "./components/ui/button";
+import { cn } from "./lib/utils";
+import { useTheme } from "./components/ThemeProvider";
+import ThemeSwitcher from "./components/ThemeSwitcher";
+import HobbyStory from "./components/HobbyStory";
+import LucyTheCat from "./components/LucyTheCat";
+import { useIntersectionObserver } from "./lib/useIntersectionObserver";
+import { useImagePreloader } from "./lib/useImagePreloader";
+import { NavLink } from "./components/NavLink";
+import MobileMenu from "./components/MobileMenu";
+import Particles from "./components/Particles";
+import SectionHeader from "./components/SectionHeader";
+import SocialLink from "./components/SocialLink";
+import Tilt from "./components/Tilt";
+import FloatingElements from "./components/FloatingElements";
+import { HoverFlipText, ColorChangeText } from "./components/TextAnimation";
 
 // Preload images for smoother experience
 const imageList = [
@@ -119,7 +122,6 @@ export default function Home() {
   // Performance optimization: throttle cursor updates
   useEffect(() => {
     let timeoutId = null;
-
     const handleMouseMove = (e) => {
       if (!timeoutId) {
         timeoutId = setTimeout(() => {
@@ -142,9 +144,8 @@ export default function Home() {
     };
 
     window.addEventListener("mousemove", handleMouseMove, { passive: true });
-
     const interactiveElements = document.querySelectorAll(
-      'a, button, [role="button"]'
+      "a, button, [role='button']"
     );
     interactiveElements.forEach((el) => {
       el.addEventListener("mouseover", handleMouseOver);
@@ -236,7 +237,7 @@ export default function Home() {
 
       <header className="fixed top-0 left-0 right-0 z-50 glassmorphism border-b border-pink-100/30 dark:border-pink-900/30">
         <div className="container mx-auto px-4 py-4 flex items-center justify-between">
-          <Link
+          <a
             href="/"
             className="text-2xl font-bold text-primary relative group font-heading"
           >
@@ -247,7 +248,7 @@ export default function Home() {
               whileHover={{ scale: 1 }}
               transition={{ type: "spring", stiffness: 500, damping: 30 }}
             />
-          </Link>
+          </a>
 
           <nav className="hidden md:flex space-x-8">
             <NavLink href="#about" isActive={currentSection === "about"}>
@@ -314,17 +315,16 @@ export default function Home() {
               className="mb-6 relative"
             >
               <div className="relative w-48 h-48 md:w-56 md:h-56">
-                <Image
+                <img
                   src={
                     imagesPreloaded
                       ? "/profile.jpg"
                       : "/placeholder.svg?height=200&width=200"
                   }
-                  width={200}
-                  height={200}
+                  width="200"
+                  height="200"
                   alt="Bliss"
                   className="rounded-full border-4 border-pink-300/50 shadow-lg relative z-10 object-cover"
-                  priority
                 />
                 <motion.div
                   className="absolute -inset-4 rounded-full bg-gradient-to-r from-pink-200 to-pink-300 z-0 blur-md"
@@ -395,10 +395,7 @@ export default function Home() {
                 <div className="w-6 h-10 border-2 border-primary-light rounded-full flex justify-center p-1">
                   <motion.div
                     animate={{ y: [0, 12, 0] }}
-                    transition={{
-                      repeat: Infinity,
-                      duration: 1.5,
-                    }}
+                    transition={{ repeat: Infinity, duration: 1.5 }}
                     className="w-2 h-2 bg-primary rounded-full"
                   />
                 </div>
@@ -427,14 +424,14 @@ export default function Home() {
                   <div className="absolute -top-4 -left-4 w-24 h-24 bg-pink-200 dark:bg-pink-800/30 rounded-full opacity-50" />
                   <div className="absolute -bottom-4 -right-4 w-32 h-32 bg-pink-300 dark:bg-pink-700/30 rounded-full opacity-50" />
                   <div className="relative z-10 overflow-hidden rounded-lg shadow-xl">
-                    <Image
+                    <img
                       src={
                         imagesPreloaded
                           ? "/about.jpg"
                           : "/placeholder.svg?height=600&width=500"
                       }
-                      width={500}
-                      height={600}
+                      width="500"
+                      height="600"
                       alt="Bliss portrait"
                       className="w-full h-auto object-cover"
                     />
@@ -515,10 +512,8 @@ export default function Home() {
           <div className="absolute inset-0 bg-gradient-to-b from-pink-50 to-pink-100/50 dark:from-pink-950/20 dark:to-gray-900/50 z-[-1]" />
           <div className="container mx-auto px-4">
             <SectionHeader title="My Hobbies" inView={hobbiesInView} />
-
             {/* Enhanced interactive hobby stories */}
             <HobbyStory />
-
             <div className="mt-20">
               <Tilt scale={1.02} perspective={1000}>
                 <motion.div
@@ -571,15 +566,14 @@ export default function Home() {
                       </motion.div>
                     </div>
                     <div className="relative h-80 md:h-full">
-                      <Image
+                      <img
                         src={
                           imagesPreloaded
                             ? "/lucy.jpg"
                             : "/placeholder.svg?height=600&width=500"
                         }
-                        fill
                         alt="Lucy the cat"
-                        className="object-cover"
+                        className="object-cover w-full h-full"
                       />
                       <motion.div
                         className="absolute inset-0 bg-gradient-to-t from-primary/30 to-transparent"
@@ -602,13 +596,11 @@ export default function Home() {
           <div className="absolute inset-0 bg-white dark:bg-gray-900 z-[-1]" />
           <div className="container mx-auto px-4">
             <SectionHeader title="Connect With Me" inView={contactInView} />
-
             <div className="max-w-3xl mx-auto mt-16 text-center">
               <p className="text-xl text-gray-700 dark:text-gray-300 mb-12">
                 I'd love to connect with you! Feel free to reach out through any
                 of my social platforms or drop me a message.
               </p>
-
               <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-16">
                 <SocialLink
                   icon={<Instagram className="w-6 h-6" />}
@@ -617,7 +609,6 @@ export default function Home() {
                   href="https://instagram.com/bliss"
                   color="#E1306C"
                 />
-
                 <SocialLink
                   icon={<Twitter className="w-6 h-6" />}
                   platform="Twitter"
@@ -625,7 +616,6 @@ export default function Home() {
                   href="https://twitter.com/bliss"
                   color="#1DA1F2"
                 />
-
                 <SocialLink
                   icon={<Linkedin className="w-6 h-6" />}
                   platform="LinkedIn"
@@ -633,7 +623,6 @@ export default function Home() {
                   href="https://linkedin.com/in/bliss"
                   color="#0077B5"
                 />
-
                 <SocialLink
                   icon={<Github className="w-6 h-6" />}
                   platform="GitHub"
@@ -689,9 +678,9 @@ export default function Home() {
                     dur="34s"
                     values="0%;3%;0%"
                     repeatCount="indefinite"
-                  ></animate>
-                  <stop offset="0%" stopColor="rgba(255, 255, 255, 1)"></stop>
-                  <stop offset="100%" stopColor="rgba(255, 255, 255, 0)"></stop>
+                  />
+                  <stop offset="0%" stopColor="rgba(255, 255, 255, 1)" />
+                  <stop offset="100%" stopColor="rgba(255, 255, 255, 0)" />
                 </radialGradient>
                 <radialGradient
                   id="Gradient2"
@@ -706,9 +695,9 @@ export default function Home() {
                     dur="23.5s"
                     values="0%;3%;0%"
                     repeatCount="indefinite"
-                  ></animate>
-                  <stop offset="0%" stopColor="rgba(255, 255, 255, 1)"></stop>
-                  <stop offset="100%" stopColor="rgba(255, 255, 255, 0)"></stop>
+                  />
+                  <stop offset="0%" stopColor="rgba(255, 255, 255, 1)" />
+                  <stop offset="100%" stopColor="rgba(255, 255, 255, 0)" />
                 </radialGradient>
                 <radialGradient
                   id="Gradient3"
@@ -723,9 +712,9 @@ export default function Home() {
                     dur="21.5s"
                     values="0%;3%;0%"
                     repeatCount="indefinite"
-                  ></animate>
-                  <stop offset="0%" stopColor="rgba(255, 255, 255, 1)"></stop>
-                  <stop offset="100%" stopColor="rgba(255, 255, 255, 0)"></stop>
+                  />
+                  <stop offset="0%" stopColor="rgba(255, 255, 255, 1)" />
+                  <stop offset="100%" stopColor="rgba(255, 255, 255, 0)" />
                 </radialGradient>
               </defs>
               <rect

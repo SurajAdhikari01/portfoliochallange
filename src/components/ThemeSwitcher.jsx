@@ -4,8 +4,8 @@ import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Sun, Moon, Laptop, Palette } from "lucide-react";
 
-import { useTheme } from "@/components/ThemeProvider";
-import { Button } from "@/components/ui/button";
+import { useTheme } from "./ThemeProvider";
+import { Button } from "./ui/button";
 
 export default function ThemeSwitcher() {
   const { theme, setTheme, colorScheme, setColorScheme, isDarkMode } =
