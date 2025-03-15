@@ -2,8 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-@import "tailwindcss";
-
 /* Updated Color Palette */
 :root {
   /* Redesigned theme colors - pink-inspired */
